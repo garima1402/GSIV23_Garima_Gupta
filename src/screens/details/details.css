@@ -1,52 +1,19 @@
+.wrapper {
+  display: flex;
+  padding: 20px;
+}
 .title-container {
-    height: 20rem;
-    margin-left: 5rem;
-  }
-  .title-wrapper {
-    position: relative;
-    display: flex;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 100%;
-    background-color: gray;
-  }
-  .title {
-    color: black;
-    font-weight: 400;
-    font-size: 4rem;
-  }
-  .rating {
-    color: black;
-    font-weight: 400;
-    font-size: 3rem;
-  }
-  .details-wrapper {
-    padding: 3rem;
-  }
-  .static-text {
-    color: #000;
-    font-weight: 400;
-  }
-  .des-text {
-    color: #3f3f3f;
-    font-weight: 400;
-  }
-  .episode-image {
-    width: 8rem;
-    height: 8rem;
-  }
-  
-  .episode-des {
-    margin-bottom: 0;
-    color: #3f3f3f;
-    font-weight: 400;
-  }
-  .episode-content {
-    display: flex;
-    /* width: 100%; */
-  }
-  .episode-text {
-    padding: 0 0 0 2rem;
-  }
-  
+  display: flex;
+}
+.container {
+  display: block;
+  margin: 0 0 0 20px;
+}
+.des-container {
+  display: flex;
+}
+.image-detail {
+  width: 10rem;
+  height: 15rem;
+  border-radius: 5px;
+}
