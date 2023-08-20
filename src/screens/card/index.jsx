@@ -21,7 +21,13 @@ function Card() {
     axios
       .request(upcoming)
       .then(function (response) {
-        setData(response.data.results);
+        if (page === 1) {
+          setData(response.data.results);
+        } else {
+          let arr = data.concat(response?.data?.results);
+          //   setData((data) => [...data, ...response.data.result]);
+          setData(arr);
+        }
         console.log(response.data.results, "resssssssssss");
       })
       .catch(function (error) {
@@ -31,7 +37,10 @@ function Card() {
   useEffect(() => {
     getUpcoming();
   }, []);
-
+  useEffect(() => {
+    getUpcoming();
+  }, [page]);
+  console.log(data, page, "datadatadatadatadatadatadatadatadatadatadatadata");
   return (
     <div>
       <div className="container">
@@ -68,6 +77,7 @@ function Card() {
           })}
         </div>
       </div>
+      <button onClick={() => setPage(page + 1)}>Show More</button>
     </div>
   );
 }
