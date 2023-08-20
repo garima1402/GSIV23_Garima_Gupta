@@ -1,0 +1,49 @@
+.card-box {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  border: 1px solid #f1f1f1;
+  background-color: #fff;
+  padding: 10px 20px;
+  margin: 0 0 0 2rem;
+}
+.heading-wrapper {  
+  display: flex;
+  justify-content: space-between;
+  margin: 0 3rem;
+}
+.main-text {
+  font-weight: 400;
+  color: #000000;
+}
+.sub-text {
+  font-weight: 400;
+  color: #c0c0c0;
+}
+.row {
+  min-width: 10rem;
+}
+.image {
+  width: 20rem;
+  height: 25rem;
+  border-radius: 5px;
+}
+.movie-des {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px;
+}
+.image-name {
+  font-size: 18px;
+}
+@media screen and (max-width: 480px) {
+  main-text {
+    font-size: 1.5rem !important;
+  }
+  .sub-text {
+    font-size: 1.2rem !important;
+  }
+  .card-box {
+    overflow-x: auto;
+  }
+}
