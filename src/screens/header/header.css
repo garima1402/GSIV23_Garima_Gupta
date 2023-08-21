@@ -17,4 +17,8 @@
   .active {
     text-decoration: underline;
   }
-  
+  .search-bar{
+    display: flex;
+    width: 20%;
+    margin: 20px;
+  }

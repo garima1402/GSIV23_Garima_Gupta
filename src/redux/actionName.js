@@ -1,3 +1,5 @@
 export const ACTION_NAME = {
   MOVIE_DATA: "MOVIE_DATA",
+  SEARCH_MOVIE_DATA: "SEARCH_MOVIE_DATA",
+
 };

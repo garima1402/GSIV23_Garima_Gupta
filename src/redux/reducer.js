@@ -5,7 +5,7 @@ const initialState = {
     movieData: [],
   },
 };
-const { MOVIE_DATA } = ACTION_NAME;
+const { MOVIE_DATA, SEARCH_MOVIE_DATA } = ACTION_NAME;
 export const getMovieDataReducer = (state = initialState, action) => {
   switch (action.type) {
     case MOVIE_DATA:
@@ -13,6 +13,19 @@ export const getMovieDataReducer = (state = initialState, action) => {
         ...state,
         payload: {
           movieData: action.payload.movieData,
+        },
+      };
+    default:
+      return state;
+  }
+};
+export const getSearchDataReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SEARCH_MOVIE_DATA:
+      return {
+        ...state,
+        payload: {
+          searchData: action.payload.searchData,
         },
       };
     default:
