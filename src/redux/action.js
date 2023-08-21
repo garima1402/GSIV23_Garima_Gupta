@@ -43,7 +43,7 @@ export const getMovieData = (page) => {
 };
 
 export const getSearchResult = (search) => {
-  // return (dispatch) => {
+  return (dispatch) => {
     axios
       .get(
         `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`,
@@ -60,4 +60,4 @@ export const getSearchResult = (search) => {
         console.error(error);
       });
   };
-// };
+};
