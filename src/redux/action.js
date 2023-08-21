@@ -50,7 +50,7 @@ export const getSearchResult = (search) => {
         { headers }
       )
       .then(function (response) {
-        console.log(search, response);
+        console.log(search, response,'resssssssssssssssss');
         // dispatch({
         //   type: MOVIE_DATA,
         //   payload: response.data.results,
