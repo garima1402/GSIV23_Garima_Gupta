@@ -2,36 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./header.css";
 import axios from "axios";
 import Search from "./search";
+import { getSearchResult } from "../../redux/action";
+import { useDispatch } from "react-redux";
 
 function Header() {
   const [search, setsearch] = useState("");
-  const searchData = {
-    method: "GET",
-    url: `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=1`,
-    headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiM2M2N2JkNGJlOGZiNzI3MWQ0Mjk2ZjVmYjIxZGI1OSIsInN1YiI6IjY0ZTA1N2IzYTNiNWU2MDFkNTllNDBmOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jL-9-aGTZekmss2g8FyA8FCJUW1_vbMIHkyffCYb1gE",
-      accept: "application/json",
-    },
-  };
-  const getSearchResult = () => {
-    axios
-      .request(searchData)
-      .then(function (response) {
-        console.log(response.data.results, "resssssssssss");
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  };
-  // const handleSearch = (search) => {
-  //   setsearch(search);
-  //   getSearchResult(search);
-  //   console.log(search, "search");
-  // };
+  const dispatch = useDispatch();
   useEffect(() => {
-    getSearchResult();
+    getSearchResult(search);
   }, [search]);
+  const handleSearch = () => {
+    dispatch(getSearchResult(search));
+  };
   return (
     <div className="main-wrapper">
       <div className="header-logo"></div>
@@ -44,6 +26,7 @@ function Header() {
         value={search}
         onChange={(e) => setsearch(e.target.value)}
       />
+      <button onClick={() => handleSearch}>Search</button>
     </div>
   );
 }

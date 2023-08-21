@@ -3,44 +3,24 @@ import "./card.css";
 import axios from "axios";
 // import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { getMovieData } from "../../redux/action";
+
 function Card() {
   const navigate = useNavigate();
-  const [data, setData] = useState();
   const [page, setPage] = useState(1);
-  const upcoming = {
-    method: "GET",
-    url: `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${page}`,
-    headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiM2M2N2JkNGJlOGZiNzI3MWQ0Mjk2ZjVmYjIxZGI1OSIsInN1YiI6IjY0ZTA1N2IzYTNiNWU2MDFkNTllNDBmOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jL-9-aGTZekmss2g8FyA8FCJUW1_vbMIHkyffCYb1gE",
-      accept: "application/json",
-    },
-  };
+  const dispatch = useDispatch();
 
-  const getUpcoming = () => {
-    axios
-      .request(upcoming)
-      .then(function (response) {
-        if (page === 1) {
-          setData(response.data.results);
-        } else {
-          let arr = data.concat(response?.data?.results);
-          //   setData((data) => [...data, ...response.data.result]);
-          setData(arr);
-        }
-        console.log(response.data.results, "resssssssssss");
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  };
+  const movieData = useSelector(
+    (state) => state?.movieData?.payload?.movieData
+  );
+
   useEffect(() => {
-    getUpcoming();
+    dispatch(getMovieData(1));
   }, []);
   useEffect(() => {
-    getUpcoming();
+    dispatch(getMovieData(page));
   }, [page]);
-  console.log(data, page, "datadatadatadatadatadatadatadatadatadatadatadata");
   return (
     <div>
       <div className="container">
@@ -49,7 +29,7 @@ function Card() {
         </div>
 
         <div className="card-box">
-          {data?.map((item, index) => {
+          {movieData?.map((item, index) => {
             return (
               <div
                 key={index}
